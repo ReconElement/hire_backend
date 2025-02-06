@@ -1,7 +1,7 @@
 import Express from "express";
 
 const app = Express();
-const PORT = 3000;
+const PORT = "https://hire-backend.vercel.app/";
 
 app.get("/hello",(req, res)=>{
     res.json("Hello World");
