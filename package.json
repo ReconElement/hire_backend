@@ -5,7 +5,8 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "dev": "npx tsc && node ./dist/index.js"
+    "dev": "npx tsc && node ./dist/index.js",
+    "vercel-build":"echo hello"
   },
   "type": "module",
   "dependencies": {
