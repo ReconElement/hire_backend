@@ -6,7 +6,8 @@
   },
   "scripts": {
     "dev": "npx tsc && node ./dist/index.js",
-    "vercel-build": "echo hello"
+    "vercel-build": "echo hello",
+    "prisma": "ts-node ./src/models/seed.ts"
   },
   "type": "module",
   "dependencies": {
@@ -26,6 +27,7 @@
     "jsonwebtoken": "^9.0.2",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "passport-oauth2": "^1.8.0"
+    "passport-oauth2": "^1.8.0",
+    "ts-node": "^10.9.2"
   }
 }

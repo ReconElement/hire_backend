@@ -1,0 +1,43 @@
+datasource db{
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+enum Role{
+    RECRUITER
+    APPLICANT
+    ADMIN
+}
+
+model User{
+    id Int @id @default(autoincrement()) 
+    email String @unique
+    password String?
+    name String
+    role Role @default(APPLICANT)
+    posts Post[]
+    profile Profile? 
+    //add company in Profile instead of in user
+}
+
+model Profile{
+    id Int @id @default(autoincrement())
+    bio String
+    company String
+    user User @relation(fields: [userId], references: [id])
+    userId Int @unique
+}
+
+model Post{
+    id Int @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title String
+    published Boolean @default(false)
+    author User @relation(fields: [authorId], references: [id])
+    authorId Int 
+}
