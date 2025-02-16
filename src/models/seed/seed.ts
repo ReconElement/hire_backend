@@ -75,3 +75,10 @@ async function seed(){
         }
     });
 }
+
+seed().catch((e)=>{
+    console.log(e);
+}).finally(async ()=>{
+    console.log("Successfully seeded database. Closing connection.");
+    db.$disconnect();
+})

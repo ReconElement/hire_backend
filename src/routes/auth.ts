@@ -1,13 +1,12 @@
 import express from 'express';
+import { Strategy as GitHubStrategy} from 'passport-github2';
 import passport from 'passport';
-import { Strategy as GoogleStrategy} from 'passport-google-oauth20';
-const router = express.Router();
-
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+const auth = express.Router();
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
 },
-function (access_token, refresh_token, profile, done){
-    
+(accessToken, refreshToken, profile, cb)=>{
+    //some db actions
 }))
